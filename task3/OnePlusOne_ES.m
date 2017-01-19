@@ -1,20 +1,23 @@
 %input:
-    %mutationlocalMisclassifiedCntunctionName: Function for fitnes
-    %yParents: Vector of parents (even if there is only one parent)
+    %fitnessFunctionName: Function for fitness
+    %yParent: Vector of parent
     %sigmaMutationStrength: Mutation strength
-    %maxNrOfIter: Maximal repitations of Generations
+    %maxNrOfIter: Maximum generations
     %minChangeDistance: Never decrease this distance after mutation
 
 %output:
-    %SelectedIndividuals: Vector of individuals having a better fittnes than
-                            %their parents, or parents whose offspring were
-                            %not as fit as them.
-    %numberOfIteration: Numpers of Repitations
-    %Fitness:  Fitness Value of Used Child
+    %numberOfIterations: Numpers of Repitations    
+    %yParent: last calculated best individuum
+    %parentFitness: last calculated best fitness value
+    %offspringFitnessHistory: Array of all best fitness values per G
 
-function [numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES(...
+
+    %G - Number of Generations G = N
+
+
+function [numberOfIterations, yParent, parentFitness, offspringFitnessHistory] = OnePlusOne_ES(...
     mutationFunctionName,...
-    yParents,...
+    yParent,...
     sigmaMutationStrength,...
     maxNrOfIter,...
     minChangeDistance)
@@ -29,27 +32,27 @@ function [numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHist
         minChangeDistance = 1e-10;     
     end
     
-    [R,C] = size(yParents);
+    [R,C] = size(yParent);
     offspringFitnessHistory = [];
     
     % initial yp & sigmaMutationStrength
-    parentFitness = feval(mutationFunctionName, yParents); %Parental Fitness
-    numberOfIteration=1; %generation count
+    parentFitness = feval(mutationFunctionName, yParent); %Parental Fitness
+    numberOfIterations=1; %generation count
     
-    while numberOfIteration <= maxNrOfIter
+    while numberOfIterations <= maxNrOfIter
         %generate offspring
-        yOffsprings = yParents + sigmaMutationStrength * normrnd(0,1,R,C); %random Normal distribution = RN
-        offspringFitness = feval(mutationFunctionName, yOffsprings);
+        yOffspring = yParent + sigmaMutationStrength * normrnd(0,1,R,C); %random Normal distribution = RN
+        offspringFitness = feval(mutationFunctionName, yOffspring);
         
         % other two break conditions
         if ((abs(offspringFitness-parentFitness) < minChangeDistance))
            break;
         elseif (offspringFitness <= parentFitness) %replace if fitness is not worse
-            yParents = yOffsprings;
+            yParent = yOffspring;
             parentFitness = offspringFitness;  
         end
         offspringFitnessHistory = [offspringFitnessHistory, parentFitness];
-        numberOfIteration = numberOfIteration + 1;
+        numberOfIterations = numberOfIterations + 1;
     end
 end
 

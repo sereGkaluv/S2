@@ -4,7 +4,7 @@ sigmaStopCondition = 10^-5;
 sigma = 1;
 randn('state', 7); 
 
-[yOffsprings, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('calcFitness', yp, sigma, sigmaStopCondition);
+[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('calcFitness', yp, sigma, sigmaStopCondition);
 
 semilogy(offspringFitnessHistory,'Color', 'blue');
 hold on;

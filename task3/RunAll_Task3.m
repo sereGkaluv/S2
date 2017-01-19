@@ -1,12 +1,11 @@
 %(1+1)ES
-%yp = ones(1, 100);
 yp = [10,10,10,10,10,10,10,10,10,10]; 
 sigmaStopCondition = 10^-5;
 sigma = 1;
 MaxLoops = 2000;
 
-[yOffsprings, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('calcFitness', yp, sigma, sigmaStopCondition, MaxLoops);
-[numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHistoryOld] = OnePlusOne_ES('calcFitness', yp, sigma, MaxLoops);
+[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('calcFitness', yp, sigma, sigmaStopCondition, MaxLoops);
+[numberOfIteration, yParent, offspringFitness, offspringFitnessHistoryOld] = OnePlusOne_ES('calcFitness', yp, sigma, MaxLoops);
 
 semilogy(offspringFitnessHistory,'Color', 'blue');
 hold on;
