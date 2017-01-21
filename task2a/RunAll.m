@@ -1,7 +1,7 @@
 %(1+1)ES
 yp = [10,10,10,10,10,10,10,10,10,10];
 sigma = 1;
-[numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES('calcFitness', yp, sigma, 1000);
+[numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES('sphereFunction', yp, sigma, 1000);
 numberOfIteration
 yOffsprings
 offspringFitness

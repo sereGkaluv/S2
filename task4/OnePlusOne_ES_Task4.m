@@ -17,16 +17,17 @@ function [yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3(
     yParent,...
     sigmaMutationStrength,...
     sigmaStopCondition, ...
+    d, ...
     maxNrOfIter,...
     minChangeDistance)
-    
-    if nargin < 4 %number of arguments input
+
+    if nargin < 5 %number of arguments input
         %output error 
         error('Wrong nr of inputs');
-    elseif nargin == 4 
+    elseif nargin == 5 
         maxNrOfIter = 100;
         minChangeDistance = 1e-10;
-    elseif nargin == 5
+    elseif nargin == 6
         minChangeDistance = 1e-10;     
     end
     
@@ -34,7 +35,7 @@ function [yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3(
     offspringFitnessHistory = [];    
 
     % initial yp & sigmaMutationStrength
-    parentFitness = feval(fitnessFunctionName, yParent); %Parental Fitness
+    parentFitness = feval(fitnessFunctionName, yParent, d); %Parental Fitness
     numberOfIterations=1; %generation count
     pOptimum = 0.2; %because of 1/5 rule
     alpha = 1.2; %should be bigger than 1 in order to be able to mutate
@@ -47,7 +48,7 @@ function [yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3(
         for k = 1: G
             %generate offspring
             yOffspring = yParent + sigmaMutationStrength * normrnd(0,1,R,G); %random normal distribution = RN
-            offspringFitness = feval(fitnessFunctionName, yOffspring);
+            offspringFitness = feval(fitnessFunctionName, yOffspring, d);
 
             % other two break conditions
             if ((abs(offspringFitness-parentFitness) < minChangeDistance))
@@ -74,8 +75,10 @@ function [yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3(
         
         
         %break logic
-        if (sigmaMutationStrength < sigmaStopCondition)
+        if ((sigmaMutationStrength < sigmaStopCondition) || (numberOfIterations >= maxNrOfIter))
             untilFlag = false;
         end
     end
 end
+
+

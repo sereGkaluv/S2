@@ -55,7 +55,3 @@ function [numberOfIterations, yParent, parentFitness, offspringFitnessHistory] =
         numberOfIterations = numberOfIterations + 1;
     end
 end
-
-function [ret] = calcFitness(x)
-    ret = x*x';
-end

@@ -4,8 +4,8 @@ sigmaStopCondition = 10^-5;
 sigma = 1;
 MaxLoops = 2000;
 
-[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('calcFitness', yp, sigma, sigmaStopCondition, MaxLoops);
-[numberOfIteration, yParent, offspringFitness, offspringFitnessHistoryOld] = OnePlusOne_ES('calcFitness', yp, sigma, MaxLoops);
+[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('sphereFunction', yp, sigma, sigmaStopCondition, MaxLoops);
+[numberOfIteration, yParent, offspringFitness, offspringFitnessHistoryOld] = OnePlusOne_ES('sphereFunction', yp, sigma, MaxLoops);
 
 semilogy(offspringFitnessHistory,'Color', 'blue');
 hold on;
