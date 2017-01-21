@@ -21,6 +21,7 @@ function [numberOfIteration, yOffsprings, offspringFitness, offspringFitnessHist
     
     if nargin < 3
         %output error 
+        error('Wrong nr of Inputs');
     elseif nargin == 3 %nubers of argument in
         maxNrOfIter = 100;
         minChangeDistance = 1e-10;
