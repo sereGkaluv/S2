@@ -6,9 +6,9 @@ sigma = 1;
 numberOfIteration
 yOffsprings
 offspringFitness
-semilogy(offspringFitnessHistory, '-', 'Color', 'blue', 'linewidth', 3);
+semilogy(offspringFitnessHistory, '-', 'Color', 'blue');
 
 xlabel('Generations', 'FontSize', 12);
 ylabel('Fitness', 'FontSize', 12);
-title('(1+1) - ES Cubic', 'FontSize', 12);
+title('(1+1)-ES on Sphere Function', 'FontSize', 12);
 legend('Fitness');

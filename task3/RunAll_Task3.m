@@ -15,6 +15,6 @@ semilogy(offspringFitnessHistoryOld,'Color', 'red');
 
 xlabel('Generations', 'FontSize', 12);
 ylabel('Fitness', 'FontSize', 12);
-title('1/5 Rule', 'FontSize', 12);
-legend('Fitness-1/5 Rule','\sigmaHistory','\offspringFitnessHistoryOld');
+title('(1+1)-ES comparison with and without 1/5 rule', 'FontSize', 12);
+legend('Fitness Value','\sigmaHistory','\offspringFitnessHistoryOld');
 

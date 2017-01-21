@@ -4,7 +4,7 @@ sigmaStopCondition = 10^-5;
 sigma = 1;
 randn('state', 7); 
 
-[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('sharpRidgeFunction', yp, sigma, sigmaStopCondition);
+[yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3('sphereFunction', yp, sigma, sigmaStopCondition);
 
 semilogy(offspringFitnessHistory,'Color', 'blue');
 hold on;

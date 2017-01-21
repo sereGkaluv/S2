@@ -1,6 +1,6 @@
 %(1+1)ES
 N = 30;
-d = 1;
+d = 10;
 yp(1:N) = 1; 
 sigmaStopCondition = 10^-5;
 sigma = 1;
@@ -12,18 +12,17 @@ subplot(2,1,1)
 semilogy(offspringFitnessHistory,'Color', 'blue');
 hold on;
 semilogy(sigmaHistory,'Color', 'green');
-
 xlabel('Generations', 'FontSize', 12);
 ylabel('Fitness', 'FontSize', 12);
-title('1/5 Rule', 'FontSize', 12);
-legend('Fitness-1/5 Rule','\sigmaHistory');
+title('Semilogarithmic plot of (1+1)-ES with 1/5 Rule on Sharp Ridge Function with d = 10', 'FontSize', 12);
+legend('Fitness Value','\sigmaHistory');
+
 
 subplot(2,1,2)
 plot(offspringFitnessHistory, 'Color', 'blue');
 hold on;
 plot(sigmaHistory,'Color', 'green');
-
 xlabel('Generations', 'FontSize', 12);
 ylabel('Fitness', 'FontSize', 12);
-title('1/5 Rule', 'FontSize', 12);
+title('Linear plot of (1+1)-ES with 1/5 Rule on Sharp Ridge Function with d = 10', 'FontSize', 12);
 legend('Fitness-1/5 Rule','\sigmaHistory');

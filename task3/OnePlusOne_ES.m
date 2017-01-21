@@ -6,17 +6,13 @@
     %minChangeDistance: Never decrease this distance after mutation
 
 %output:
-    %numberOfIterations: Numpers of Repitations    
-    %yParent: last calculated best individuum
-    %parentFitness: last calculated best fitness value
-    %offspringFitnessHistory: Array of all best fitness values per G
+    %numberOfIteration: Numpers of iterations
+    %yOffspring: generated offspring
+    %offspringFitness: fitness of yoffspring
+    %offspringFitnessHistory
 
-
-    %G - Number of Generations G = N
-
-
-function [numberOfIterations, yParent, parentFitness, offspringFitnessHistory] = OnePlusOne_ES(...
-    mutationFunctionName,...
+function [numberOfIteration, yOffspring, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES(...
+    fitnessFunctionName,...
     yParent,...
     sigmaMutationStrength,...
     maxNrOfIter,...
@@ -32,17 +28,17 @@ function [numberOfIterations, yParent, parentFitness, offspringFitnessHistory] =
         minChangeDistance = 1e-10;     
     end
     
-    [R,C] = size(yParent);
     offspringFitnessHistory = [];
     
     % initial yp & sigmaMutationStrength
-    parentFitness = feval(mutationFunctionName, yParent); %Parental Fitness
-    numberOfIterations=1; %generation count
+    parentFitness = feval(fitnessFunctionName, yParent); %Parental Fitness
+    numberOfIteration=1; %generation count
     
-    while numberOfIterations <= maxNrOfIter
+    while numberOfIteration <= maxNrOfIter
         %generate offspring
+        [R,C] = size(yParent);
         yOffspring = yParent + sigmaMutationStrength * normrnd(0,1,R,C); %random Normal distribution = RN
-        offspringFitness = feval(mutationFunctionName, yOffspring);
+        offspringFitness = feval(fitnessFunctionName, yOffspring);
         
         % other two break conditions
         if ((abs(offspringFitness-parentFitness) < minChangeDistance))
@@ -51,7 +47,7 @@ function [numberOfIterations, yParent, parentFitness, offspringFitnessHistory] =
             yParent = yOffspring;
             parentFitness = offspringFitness;  
         end
-        offspringFitnessHistory = [offspringFitnessHistory, parentFitness];
-        numberOfIterations = numberOfIterations + 1;
+        offspringFitnessHistory(numberOfIteration) = parentFitness;
+        numberOfIteration = numberOfIteration + 1;
     end
 end
