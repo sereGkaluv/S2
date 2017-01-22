@@ -2,6 +2,7 @@
     %fitnessFunctionName: Function for fitness
     %yParent: Vector of parent
     %sigmaMutationStrength: Mutation strength
+    %sigmaStopCondition: Mutation stop condition
     %maxNrOfIter: Maximum generations
     %minChangeDistance: Never decrease this distance after mutation
 
@@ -9,8 +10,6 @@
     %yParent: last calculated best individuum
     %sigmaHistory: Array of all sigmas per generation (G)
     %offspringFitnessHistory: Array of all best fitness values per G
-
-    %G - Number of Generations G = N
     
 function [yParent, sigmaHistory, offspringFitnessHistory] = OnePlusOne_ES_Task3(...
     fitnessFunctionName,...

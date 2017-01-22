@@ -9,7 +9,7 @@
     %numberOfIteration: Numpers of iterations
     %yOffspring: generated offspring
     %offspringFitness: fitness of yoffspring
-    %offspringFitnessHistory
+    %offspringFitnessHistory: Record of Fitness
 
 function [numberOfIteration, yOffspring, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES(...
     fitnessFunctionName,...

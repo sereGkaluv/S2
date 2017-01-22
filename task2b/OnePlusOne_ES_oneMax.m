@@ -1,17 +1,15 @@
 %input:
-    %mutationlocalMisclassifiedCntunctionName: Function for fitnes
+    %fitnessFunctionName: Function for fitnes
     %yParent: Vector of parents (even if there is only one parent)
-    %bestFitness: best possible fitness that can be achieved
     %probabilityOfOnes: propability of Ones
     %maxNrOfIter: Maximal repitations of Generations
     %minChangeDistance: Never decrease this distance after mutation
 
 %output:
-    %SelectedIndividuals: Vector of individuals having a better fittnes than
-                            %their parents, or parents whose offspring were
-                            %not as fit as them.
-    %numberOfIteration: Numpers of Repitations
-    %Fitness:  Fitness Value of Used Child
+    %numberOfIteration: Numpers of iterations
+    %yOffspring: generated offspring
+    %offspringFitness: fitness of yoffspring
+    %offspringFitnessHistory: Record of Fitness
 
 function [numberOfIteration, yOffspring, offspringFitness, offspringFitnessHistory] = OnePlusOne_ES_oneMax(...
     fitnessFunctionName,...
