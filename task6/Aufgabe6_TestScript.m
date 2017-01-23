@@ -9,6 +9,7 @@ sigmaStop = 10^(-5);
 
 [iterations, yOptimalVector, fitnessHistory, sigmaHistory] = MyMyILaSiSelfAdaptationES(sigmaMutation, sigmaStop, N, my, lambda, rho, 'QuadraticSphereModel', 1500);
 iterations
+fitnessHistory(size(fitnessHistory, 2))
 
 semilogy(1:iterations+1, fitnessHistory, '-', 'Color', 'blue', 'linewidth', 2);
 hold on;
