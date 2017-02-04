@@ -3,6 +3,9 @@
 % optimization. Stategy type: (mu/mu_I, lambda)-CMSA-ES
 % Scalarized minimization of quadratic focal point deviation and lens mass
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Copyright by Hans-Georg Beyer (HGB), 25.06.10. For non-commercial use
+%% only. Commercial use requires written permission by Hans-Georg Beyer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global LensParms; % physical parameters of the geometrical system
 LensParms.h = 1; 
 LensParms.b = 20; 
