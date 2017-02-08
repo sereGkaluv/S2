@@ -20,7 +20,7 @@ for my=myFrom:myTo
   semilogy(1:iterations+1, fitnessHistory, '-', 'Color', colorMap(my,:), 'linewidth', 2);
   hold on;
 
-  legends = [legends; sprintf('Fitness \\mu = %i', my)];
+  legends = [legends; {sprintf('Fitness \\mu = %i', my)}];
 end
 hold off;
 
