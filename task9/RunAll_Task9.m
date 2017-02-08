@@ -31,10 +31,10 @@ legend('(1+1)-ES 1/5 Rule','(3/3_I, 10)-\sigma SA-ES');
 % Plotting second part (task b)
 subplot(2, 1, 2);
 
-semilogy(opo_functionsCalls, '-', 'Color', 'blue', 'linewidth', 2);
+plot(opo_functionsCalls, '-', 'Color', 'blue', 'linewidth', 2);
 hold on;
 
-semilogy(sa_es_functionsCalls, '-', 'Color', 'green', 'linewidth', 2);
+plot(sa_es_functionsCalls, '-', 'Color', 'green', 'linewidth', 2);
 hold off;
 
 xlabel('Generations', 'FontSize', 12);
