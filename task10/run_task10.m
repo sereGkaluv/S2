@@ -1,12 +1,12 @@
 randn('state', 7);
     
 
-lambda = 20; 
+lambda = 500; 
 N = 30; 
 rho = 1; % Size of family (parents)
 sigmaMutation = 1;
 sigmaStop = 10^(-5);
-my = ones(N,1)*10; % Size of parent population
+my = 1; % Size of parent population
 differenceToOptimumGenerations = [];
 [iterations, yOptimalVector, fitnessHistory, sigmaHistory, differenceToOptimumGenerations] = MyMyILaSiSelfAdaptationESwithNoise(sigmaMutation, sigmaStop, N, my, lambda, rho, 'QuadraticSphereModelWithNoise', 3000);
 iterations

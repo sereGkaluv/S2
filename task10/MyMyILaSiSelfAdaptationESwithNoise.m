@@ -26,7 +26,7 @@ function [iterations, yOptimalVector, fitnessHistory, sigmaHistory, differenceTo
     tau = 1 / sqrt(2*N); % sqrt(2*N) instead of sqrt(N) Skript, s. 106
     
     % Preparing parent population. sSkript, s.97
-    initialParentalVector = ones(1, N);
+    initialParentalVector = ones(1, N)*10;
     for k = 1:my
         yOptimalVector = [yOptimalVector; initialParentalVector sigmaMutation feval(fitnessCalculationFunction, initialParentalVector)];
     end
