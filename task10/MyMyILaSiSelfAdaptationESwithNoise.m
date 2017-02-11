@@ -14,10 +14,11 @@
 % fitnessHistory: fitness history
 % sigmaHistory: history of mutations
 
-function [iterations, yOptimalVector, fitnessHistory, sigmaHistory] = MyMyILaSiSelfAdaptationESwithNoise(sigmaMutation, sigmaStop, N, my, lambda, rho, fitnessCalculationFunction, maxIter)
+function [iterations, yOptimalVector, fitnessHistory, sigmaHistory, differenceToOptimumGenerations] = MyMyILaSiSelfAdaptationESwithNoise(sigmaMutation, sigmaStop, N, my, lambda, rho, fitnessCalculationFunction, maxIter)
   
     % Vectors for gathering statistics
     yOptimalVector = [];
+    yLastOptimalVector = [];
     fitnessHistory = [];
     sigmaHistory = [];
     
@@ -79,11 +80,13 @@ function [iterations, yOptimalVector, fitnessHistory, sigmaHistory] = MyMyILaSiS
         
         % Updating pool.
         yOptimalVector = [];
-        
+        yLastOptimalVector = yOptimalVector;
         for selectionIter = 1:my
             currentIndex = indexes(selectionIter);
             yOptimalVector = [yOptimalVector; yMutatedParameters(currentIndex,:) yMutatedSigmas(currentIndex) yMutatedFitnesses(currentIndex)];
         end
+        
+        differenceToOptimumGenerations(iterations+1) = abs(norm(yLastOptimalVector) - norm(yOptimalVector));
         
         % Increase iteration number
         iterations = iterations + 1;
